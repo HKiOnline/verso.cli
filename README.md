@@ -1,0 +1,2 @@
+# verso
+Simple semver extractor
