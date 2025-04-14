@@ -1,6 +1,6 @@
 package verext
 
 type Changelog struct {
-	latest   Semver
-	versions []Semver
+	Path     string
+	Versions []Semver
 }
