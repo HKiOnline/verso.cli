@@ -1,4 +1,4 @@
-package verext
+package verso
 
 type Changelog struct {
 	Path     string

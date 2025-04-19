@@ -1,4 +1,4 @@
-package verext
+package verso
 
 // Parse semantic versions from a CHANGELOG file.
 // Takes in the file path as parameter.
