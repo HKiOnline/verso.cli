@@ -2,8 +2,10 @@ package app
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/hkionline/verso"
 )
@@ -28,6 +30,7 @@ func New() (*app, error) {
 	return app, nil
 }
 
+// ReadChangelog reads the CHANGELOG.md file from the current path.
 func (a *app) ReadChangelog() {
 	// TODO: Add logic to read CHANGELOG from a specific path. For now, current working directory is used.
 
@@ -35,6 +38,11 @@ func (a *app) ReadChangelog() {
 	if err != nil {
 		log.Fatalf("failed to get path for current executable: %v\n", err)
 	}
+
+	splitPath := strings.Split(execPath, "/")
+	splitPath = splitPath[0 : len(splitPath)-1] // Remove the last index, which is the executable name
+
+	execPath = strings.Join(splitPath, "/")
 
 	a.changelog, err = verso.Parse(execPath + "/CHANGELOG.md")
 
@@ -44,7 +52,16 @@ func (a *app) ReadChangelog() {
 }
 
 func (a *app) Output() {
-	panic("unimplemented")
+	if a.arg == "latest" {
+		version := a.changelog.Versions[0]
+		fmt.Fprintf(os.Stdout, "%d.%d.%d\n", version.Major, version.Minor, version.Patch)
+	}
+
+	if a.arg == "list" {
+		for _, version := range a.changelog.Versions {
+			fmt.Fprintf(os.Stdout, "%d.%d.%d\n", version.Major, version.Minor, version.Patch)
+		}
+	}
 }
 
 func getFlagArg() string {
