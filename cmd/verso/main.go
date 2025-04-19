@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/hkionline/verso/internal/app"
@@ -14,6 +13,7 @@ func main() {
 		log.Fatalf("failed to initialize the app: %v\n", err)
 	}
 
-	fmt.Printf("app: %+v\n", app)
+	app.ReadChangelog()
+	app.Output()
 
 }

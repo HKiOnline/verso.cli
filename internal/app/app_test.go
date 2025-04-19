@@ -3,7 +3,6 @@ package app
 import (
 	"os"
 	"testing"
-	//"github.com/hkionline/verso/internal/app"
 )
 
 func TestNewApp(t *testing.T) {
