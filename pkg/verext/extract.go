@@ -14,17 +14,20 @@ func extract(content string) (Changelog, error) {
 	}
 
 	// Regular expression to match version headers
-	re := regexp.MustCompile(`## \[(\d+\.\d+\.\d+(?:-\w+)?)\] - (\d{4}-\d{2}-\d{2})`)
+	re := regexp.MustCompile(`## \[([\d\.]+)(?:-([\da-zA-Z\-\.]+))?(?:\+([\da-zA-Z\-\.]+))?\] - (\d{4}-\d{2}-\d{2})`)
 	matches := re.FindAllStringSubmatch(content, -1)
 
 	for _, match := range matches {
 
-		if len(match) != 3 {
+		// A match must have five and exactly five elements
+		if len(match) != 5 {
 			continue // Skip invalid matches
 		}
 
 		versionStr := match[1]
-		dateStr := match[2]
+		preRelease := match[2]
+		build := match[3]
+		dateStr := match[4]
 
 		// Parse version string
 		parts := strings.Split(versionStr, ".")
@@ -36,19 +39,15 @@ func extract(content string) (Changelog, error) {
 		if err != nil {
 			continue
 		}
+
 		minor, err := strconv.Atoi(parts[1])
 		if err != nil {
 			continue
 		}
+
 		patch, err := strconv.Atoi(parts[2])
 		if err != nil {
 			continue
-		}
-
-		// Handle pre-release versions (e.g., 1.2.3-alpha.1)
-		preRelease := ""
-		if strings.Contains(versionStr, "-") {
-			preRelease = strings.Split(versionStr, "-")[1]
 		}
 
 		// Parse date
@@ -63,7 +62,7 @@ func extract(content string) (Changelog, error) {
 			Minor:      minor,
 			Patch:      patch,
 			PreRelease: preRelease,
-			Build:      "", // Not present in the example format
+			Build:      build,
 			Date:       date,
 		}
 

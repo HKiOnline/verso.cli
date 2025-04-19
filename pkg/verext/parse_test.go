@@ -10,7 +10,7 @@ import (
 func TestParse(t *testing.T) {
 
 	testDataDir := "../../tests/data"
-	testFile := "keep_a_changelog.md"
+	testFile := "changelog_challenges.md"
 	filePath := filepath.Join(testDataDir, testFile)
 
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
@@ -23,12 +23,14 @@ func TestParse(t *testing.T) {
 		t.Error(err)
 	}
 
-	if len(cl.Versions) == 0 {
-		t.Error("No version extracted")
+	foundVersionCount := len(cl.Versions)
+	log.Printf("%d versions found", foundVersionCount)
+
+	expectedVersionCount := 17
+	if expectedVersionCount != foundVersionCount {
+		t.Fatalf("expected to find %d versions but found %d", expectedVersionCount, foundVersionCount)
 	}
 
-	log.Printf("%d versions found", len(cl.Versions))
 	log.Printf("latest version: %v+", cl.Versions[0])
-
 	log.Printf("all versions:\n%v+", cl.Versions)
 }
