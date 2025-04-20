@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-## [0.0.0] - 0000.00.00
+## [0.1.0] - 2025-04-20
+
+### Added
+
+- Created basic runnable application
 
 
