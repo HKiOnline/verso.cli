@@ -9,7 +9,7 @@ import (
 func TestGetFile_SuccessfulRead(t *testing.T) {
 	t.Parallel()
 
-	testDataDir := "tests/data"
+	testDataDir := "../../tests/data"
 	testFile := "keep_a_changelog.md"
 	filePath := filepath.Join(testDataDir, testFile)
 

@@ -10,7 +10,7 @@ import (
 func TestParse(t *testing.T) {
 	t.Parallel()
 
-	testDataDir := "tests/data"
+	testDataDir := "../../tests/data"
 	testFile := "changelog_challenges.md"
 	filePath := filepath.Join(testDataDir, testFile)
 

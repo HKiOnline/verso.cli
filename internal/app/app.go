@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/hkionline/verso"
+	"github.com/hkionline/verso/pkg/verso"
 )
 
 const defaultArg string = "latest"
