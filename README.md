@@ -8,9 +8,16 @@ Simple [CHANGELOG]("https://keepachangelog.com") [semver]("https://semver.org/")
 
 ### Usage as CLI
 
+When using verso as CLI, it expects to find a CHANGELOG-file from the working directory you are in.
+
 Get the latest version in the CHANGELOG.
 ```bash
 verso latest
+```
+
+Get list of versions found from the CHANGELOG.
+```bash
+verso list
 ```
 
 ### Usage as library package
