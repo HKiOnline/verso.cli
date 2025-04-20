@@ -1,7 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	"github.com/hkionline/verso/internal/app"
+)
 
 func main() {
-	fmt.Println("hello from verso")
+
+	app, err := app.New()
+	if err != nil {
+		log.Fatalf("failed to initialize the app: %v\n", err)
+	}
+
+	app.ReadChangelog()
+	app.Output()
+
 }
