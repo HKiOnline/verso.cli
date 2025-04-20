@@ -1,14 +1,12 @@
 <img src="docs/attachments/verso_logo_banner.svg" />
 
-# verso
+# verso.cli
 
-Simple [CHANGELOG]("https://keepachangelog.com") [semver]("https://semver.org/") extractor CLI and libray.
+Simple [CHANGELOG]("https://keepachangelog.com") [semver]("https://semver.org/") extractor CLI. If you'd like to use verso as a Go library module, have a look at the [hkionline/verso](https://github.com/hionline/verso) -project.
 
 ## Usage
 
-### Usage as CLI
-
-When using verso as CLI, it expects to find a CHANGELOG-file from the working directory you are in.
+Verso CLI expects to find a CHANGELOG-file from the working directory you are in.
 
 Get the latest version in the CHANGELOG.
 ```bash
@@ -20,11 +18,3 @@ Get list of versions found from the CHANGELOG.
 verso list
 ```
 
-### Usage as library package
-
-```go
-import "github.com/hkionline/verso/pkg/verso"
-
-changelog, err := verso.Parse("path/to/CHANGELOG.md")
-
-```
