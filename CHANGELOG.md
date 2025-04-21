@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.2.0] - 2025-04-21
+
+### Changed
+
+- Removed verso library code to a separate project (https://github.com/hkionline/verso)
+
 ## [0.1.0] - 2025-04-20
 
 ### Added

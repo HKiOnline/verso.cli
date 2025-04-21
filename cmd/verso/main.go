@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/hkionline/verso/internal/app"
+	"github.com/hkionline/verso.cli/internal/app"
 )
 
 func main() {
