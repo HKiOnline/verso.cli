@@ -2,7 +2,7 @@
 
 # verso.cli
 
-Simple [CHANGELOG]("https://keepachangelog.com") [semver]("https://semver.org/") extractor CLI. If you'd like to use verso as a Go library module, have a look at the [hkionline/verso](https://github.com/hionline/verso) -project.
+Simple [CHANGELOG](https://keepachangelog.com) [semver](https://semver.org/) extractor CLI. If you'd like to use verso as a Go library module, have a look at the [hkionline/verso](https://github.com/hionline/verso) -project.
 
 ## Usage
 
