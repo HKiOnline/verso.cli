@@ -3,17 +3,18 @@
 Thank you for considering contributing to the project! 🎉❤️
 
 This project is a light weight hobby project. It is intended to have a low barrier for entry when it comes to contributing to it. The author of this repository is committed to approach all contributions in good faith and respect. However the ultimate decision what to include into the project stays with the author of the repository.  
+
 Before you go too deep into the process, have a look at the [README-file](https://github.com/hkionline/verso.cli/README.md) to get a general idea of the project.
 
 ## How to
 
 The following sub-sections instructs how to make the most common types of contributions. If you feel something is missing from the instructions, feel free to create an issue. If you are very new to coding, tools like git and contributing to project have a look at the Resources and Documentation -section below.
 
-### Issue
+### Issues
 
 An issue is where contributions start. Have a look at the "Issues" section of the repository and identify the issue you'd like to contribute to. Contributions come in many forms. They are not always code. A contribution can be as simple as a comment in an existing issue. If you however want to contribute code, there must be a issue for the contribution. If there isn't, you can create one. The issue is then reviewed by the author.
 
-Make sure the issue sufficiently describes the issue. At the moment there is no template for issues.
+Make sure the description sufficiently explains the issue. At the moment there is no template for the issues.
 
 Not all issues are accepted in the end. Don't feel bad about it. Your idea might have been good but it just didn't fit the idea of the project or the timing might have been wrong for instance. Issues which are not accepted will be closed.
 
@@ -29,7 +30,7 @@ If you are looking for a simple issue to start with, look for the "good first is
 - Issues which are not accepted by the project are closed
 - Issues should be labelled
 
-### Pull request
+### Pull Requests
 
 - Must be based on an issue
 - Must include tests for new code
