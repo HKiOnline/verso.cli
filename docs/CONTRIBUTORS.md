@@ -32,11 +32,20 @@ If you are looking for a simple issue to start with, look for the **"good first 
 
 ### Pull Requests
 
-New code, configurations and documentation are added to the project via pull request.
+New code, configurations and documentation are added to the project via [pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). Pull request must be connected to an existing issue.
+
+You'll work in your own branch and when your changes are completed you can make a pull request to the main branch of this repository.
+
+If you add new code, it must include tests for the code and the existing tests must also pass. If the new code changes behaviour and existing tests are broken they must be fixed before a pull request can be merged.
+
+In cases where the pull request does not add new code, adding tests is not needed unless the addition affects the code base in some way. All existing tests must still pass.  
+
+Finally you must always update the CHANGELOG.md of the project. The format in the changelog is based on "[keep a Changelog](https://keepachangelog.com/en/1.1.0/)",
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 **Summary**:
-- Must be based on an issue
-- Must include tests for new code
+- PRs must be based on an issue
+- PRs must include tests for new code
 - All tests must pass
 - Changelog must be updated with a new version
 
@@ -44,6 +53,7 @@ New code, configurations and documentation are added to the project via pull req
 
 This section will describe the conventions, assumptions and the code style used in the project.
 
+- GitHub Flow
 - go formatter
 - linter used elsewhere
 - coding principles
