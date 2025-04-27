@@ -2,13 +2,15 @@
 
 Thank you for considering contributing to the project! 🎉❤️
 
-This project is a light weight hobby project. It is intended to have a low barrier for entry when it comes to contributing to it. The author of this repository is committed to approach all contributions in good faith and respect. However the ultimate decision what to include into the project stays with the author of the repository.  
+This project is a light weight hobby project with a low barrier for contributions. The repository's owner is committed to approach all contributions in good faith and respect. Ultimately, the repository owner maintains final say over what is included in the project.
 
 Before you go too deep into the process, have a look at the [README-file](https://github.com/hkionline/verso.cli) to get a general idea of the project. And if you are conributing the first time, please read this document.
 
+---
+
 ## How to
 
-The following sub-sections instructs how to make the most common types of contributions. If you feel something is missing from the instructions, feel free to create an issue. If you are very new to coding, tools like git and contributing to project have a look at the Resources and Documentation -section below.
+Here's a guide to the most common ways to contribute to this project. If you feel something is missing from the instructions, feel free to create an issue. If you are very new to coding, tools like git and contributing to project have a look at the Resources and Documentation -section below.
 
 ### Issues
 
@@ -32,7 +34,7 @@ If you are looking for a simple issue to start with, look for the **"good first 
 
 ### Pull Requests
 
-New code, configurations and documentation are added to the project via [pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). Pull request must be connected to an existing issue.
+New code, configurations and documentation are added to the project via [pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). Pull request must be connected to an existing issue. This helps ensure that contributions are aligned with the project's goals and that discussions are centralized.
 
 You'll work in your own branch and when your changes are completed you can make a pull request to the main branch of this repository.
 
@@ -43,18 +45,27 @@ In cases where the pull request does not add new code, adding tests is not neede
 Finally you must always update the CHANGELOG.md of the project. The format in the changelog is based on [Keep a Changelog -project](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+All pull requests will be reviewed by the repository owner or project maintainers. As part of the review, the reviewers may suggest or require changes before the pull request can beapproved and ultimately merged. An approval from the repository owner or a project maintainer is required before a merge.
+
+Commits in the PR must be squashed when merged. The title of the merged commit message must be "Verso CLI {semver}", the name of the PR or the issue can be used in the body of the commit message.
+
 **Summary**:
 - PRs must be based on an issue
 - PRs must include tests for new code
 - All tests must pass
 - Changelog must be updated with a new version
+- PRs must be reviewed and approved before they can be merged
+- PRs commits must be squashed when merged
+- PRs commit message should use the template given above
 
-## Convetions and Style
+---
+
+## Conventions and Style
 
 This section will describe the conventions, assumptions and the code style used in the project.
 
 ### GitHub Flow
-Firstly, the project follows the [GitHub Flow]() which is a simplified git branching technique. In principle this means there's only the main and the feature branches which are merged to the main branch via pull requests.
+Firstly, the project follows the [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) which is a simplified git branching technique. In principle this means there's only the main and the feature branches which are merged to the main branch via pull requests.
 
 ### Code Formatting and Style
 
@@ -63,11 +74,13 @@ If your contribution is not code, please use a linter or a similar tool.
 
 ### Versioning
 
-Everytime a new contribution is made, the version number of the project changes. It does not matter if the change is a code change or something else. The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Changes are alway documented to a [Changelog](https://keepachangelog.com/en/1.1.0/).
+Everytime a new contribution is made, the version number of the project changes. It does not matter if the change is a code change or something else. The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Changes are always documented to a [Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Testing
 
 All new contributions must be tested.
+
+---
 
 ## Resources and Documentation
 
