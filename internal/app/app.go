@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 
 	"github.com/hkionline/verso"
 )
@@ -34,15 +33,11 @@ func New() (*app, error) {
 func (a *app) ReadChangelog() {
 	// TODO: Add logic to read CHANGELOG from a specific path. For now, current working directory is used.
 
-	execPath, err := os.Executable()
+	execPath, err := os.Getwd()
+
 	if err != nil {
-		log.Fatalf("failed to get path for current executable: %v\n", err)
+		log.Fatalf("failed to get path for current working directory: %v\n", err)
 	}
-
-	splitPath := strings.Split(execPath, "/")
-	splitPath = splitPath[0 : len(splitPath)-1] // Remove the last index, which is the executable name
-
-	execPath = strings.Join(splitPath, "/")
 
 	a.changelog, err = verso.Parse(execPath + "/CHANGELOG.md")
 
