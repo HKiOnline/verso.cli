@@ -4,7 +4,7 @@ Thank you for considering contributing to the project! 🎉❤️
 
 This project is a light weight hobby project. It is intended to have a low barrier for entry when it comes to contributing to it. The author of this repository is committed to approach all contributions in good faith and respect. However the ultimate decision what to include into the project stays with the author of the repository.  
 
-Before you go too deep into the process, have a look at the [README-file](https://github.com/hkionline/verso.cli) to get a general idea of the project.
+Before you go too deep into the process, have a look at the [README-file](https://github.com/hkionline/verso.cli) to get a general idea of the project. And if you are conributing the first time, please read this document.
 
 ## How to
 
@@ -40,7 +40,7 @@ If you add new code, it must include tests for the code and the existing tests m
 
 In cases where the pull request does not add new code, adding tests is not needed unless the addition affects the code base in some way. All existing tests must still pass.  
 
-Finally you must always update the CHANGELOG.md of the project. The format in the changelog is based on "[keep a Changelog](https://keepachangelog.com/en/1.1.0/)",
+Finally you must always update the CHANGELOG.md of the project. The format in the changelog is based on [Keep a Changelog -project](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 **Summary**:
@@ -53,18 +53,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This section will describe the conventions, assumptions and the code style used in the project.
 
-- GitHub Flow
-- go formatter
-- linter used elsewhere
-- coding principles
-- versioning (semver)
-- testing requirements
+### GitHub Flow
+Firstly, the project follows the [GitHub Flow]() which is a simplified git branching technique. In principle this means there's only the main and the feature branches which are merged to the main branch via pull requests.
+
+### Code Formatting and Style
+
+Since this project is written exclusively in Go all code must be formatted using Go's own formatter utility [gofmt](https://pkg.go.dev/cmd/gofmt).
+If your contribution is not code, please use a linter or a similar tool.
+
+### Versioning
+
+Everytime a new contribution is made, the version number of the project changes. It does not matter if the change is a code change or something else. The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Changes are alway documented to a [Changelog](https://keepachangelog.com/en/1.1.0/).
+
+### Testing
+
+All new contributions must be tested.
 
 ## Resources and Documentation
-
-This section list references, resources and documentation which might be helpful if you decide to contribute.
-
-If you are very new to coding, tools like git and contributing to projects the following resouces might be useful for you:
 
 - [Finding ways to contribute to open source on GitHub](https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github)
 - [Set up Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
