@@ -4,6 +4,16 @@
 
 Simple [CHANGELOG](https://keepachangelog.com) [semver](https://semver.org/) extractor CLI. If you'd like to use verso as a Go library module, have a look at the [hkionline/verso](https://github.com/hkionline/verso) -project.
 
+## Installation
+
+At the moment you need to have Go lang installed. Please make sure you have your GOPATH environmental variable set and exported as well. If you have these requirements fullfilled you can install Verso CLI with the following command:
+
+```bash
+go install github.com/hkionline/verso.cli/cmd/verso@latest
+```
+
+After Installation you should now have the verso command available from your favorite terminal emulator.
+
 ## Usage
 
 Verso CLI expects to find a CHANGELOG-file from the working directory you are in.
