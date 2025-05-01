@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.2.5] - 2025-05-01
+
+### Changed
+
+- Changed dependent verso module version due to the modules versioning changes
+- Changed to use verso.ParsePath instead of verso.Parse -function
+
 ## [0.2.4] - 2025-04-28
 
 ### Added
