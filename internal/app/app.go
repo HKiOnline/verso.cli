@@ -3,6 +3,7 @@ package app
 import (
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"os"
 
@@ -39,10 +40,26 @@ func (a *app) ReadChangelog() {
 		log.Fatalf("failed to get path for current working directory: %v\n", err)
 	}
 
-	a.changelog, err = verso.Parse(execPath + "/CHANGELOG.md")
+	a.changelog, err = verso.ParsePath(execPath + "/CHANGELOG.md")
 
 	if err != nil {
 		log.Fatalf("failed to read version info: %v\n", err)
+	}
+}
+
+// ReadStdIn reads contents of a changelog from the standard in
+func (a *app) ReadStdIn() {
+
+	bytes, err := io.ReadAll(os.Stdin)
+
+	if err != nil {
+		log.Fatalf("error reading changelog from stdin: %s", err)
+	}
+
+	a.changelog, err = verso.ParseBytes(bytes)
+
+	if err != nil {
+		log.Fatalf("error parsing changelog from bytes: %s", err)
 	}
 }
 
