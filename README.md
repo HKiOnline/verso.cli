@@ -16,15 +16,32 @@ After Installation you should now have the verso command available from your fav
 
 ## Usage
 
-Verso CLI expects to find a CHANGELOG-file from the working directory you are in.
+Verso CLI expects to find a CHANGELOG-file from the working directory you are in. Alternatively you can pipe a CHANGELOG-file from a path.
 
 Get the latest version in the CHANGELOG.
 ```bash
-verso latest
+> verso latest
+
+0.3.0
 ```
 
-Get list of versions found from the CHANGELOG.
+Get list of versions found from the CHANGELOG. Each version will be in its own line.
 ```bash
-verso list
+> verso list
+
+0.3.0
+0.2.5
+0.2.4
+0.2.3
+0.2.2
+0.2.1
+0.2.0
+0.1.0
 ```
 
+Pipe a CHANGELOG-file from a path using e.g. cat
+```bash
+> cat CHANGELOG.md | verso latest 
+
+0.3.0
+```

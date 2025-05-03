@@ -3,6 +3,7 @@ package app
 import (
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"os"
 
@@ -29,8 +30,28 @@ func New() (*app, error) {
 	return app, nil
 }
 
-// ReadChangelog reads the CHANGELOG.md file from the current path.
+// ReadChangelog reads a changelog either from stdin if there is content or from working directory
 func (a *app) ReadChangelog() {
+
+	stat, err := os.Stdin.Stat()
+
+	// Highly unlikely to happen, but let's deal with it anyways
+	if err != nil {
+		log.Fatalf("failed to get stats from stdin: %s", err)
+	}
+
+	// if we have something in stdin then we'll read the changelog from there
+	// otherwise seek a changelog from the working directory
+	if stat.Size() > 0 {
+		a.readFromStdIn()
+	} else {
+		a.readFromWorkingDirectory()
+	}
+
+}
+
+// ReadFromWorkingDirectory reads the CHANGELOG.md file from the current path.
+func (a *app) readFromWorkingDirectory() {
 	// TODO: Add logic to read CHANGELOG from a specific path. For now, current working directory is used.
 
 	execPath, err := os.Getwd()
@@ -43,6 +64,22 @@ func (a *app) ReadChangelog() {
 
 	if err != nil {
 		log.Fatalf("failed to read version info: %v\n", err)
+	}
+}
+
+// ReadFromStdIn reads contents of a changelog from the standard in
+func (a *app) readFromStdIn() {
+
+	bytes, err := io.ReadAll(os.Stdin)
+
+	if err != nil {
+		log.Fatalf("error reading changelog from stdin: %s", err)
+	}
+
+	a.changelog, err = verso.ParseBytes(bytes)
+
+	if err != nil {
+		log.Fatalf("error parsing changelog from bytes: %s", err)
 	}
 }
 

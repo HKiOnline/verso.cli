@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.3.0] - 2025-05-03
+
+### Added
+
+- Added ability to read changelogs from the stdin (issue #10)
+- Added output examples to readme (issue #19)
+
+### Changed
+
+- Changed to use verso library v0.2.2
+
 ## [0.2.5] - 2025-05-01
 
 ### Changed
