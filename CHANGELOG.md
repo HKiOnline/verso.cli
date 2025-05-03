@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added ability to read changelogs from the stdin (issue #10)
+- Added output examples to readme (issue #19)
 
 ### Changed
 
