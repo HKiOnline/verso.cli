@@ -8,6 +8,7 @@ import (
 	"os"
 
 	"github.com/hkionline/verso"
+	"github.com/hkionline/verso.cli/internal/output"
 )
 
 const defaultArg string = "latest"
@@ -85,14 +86,11 @@ func (a *app) readFromStdIn() {
 
 func (a *app) Output() {
 	if a.arg == "latest" {
-		version := a.changelog.Versions[0]
-		fmt.Fprintf(os.Stdout, "%d.%d.%d\n", version.Major, version.Minor, version.Patch)
+		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
 	}
 
 	if a.arg == "list" {
-		for _, version := range a.changelog.Versions {
-			fmt.Fprintf(os.Stdout, "%d.%d.%d\n", version.Major, version.Minor, version.Patch)
-		}
+		fmt.Fprint(os.Stdout, output.List(&a.changelog))
 	}
 }
 
