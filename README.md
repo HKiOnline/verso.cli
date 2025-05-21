@@ -18,12 +18,16 @@ After Installation you should now have the verso command available from your fav
 
 Verso CLI expects to find a CHANGELOG-file from the working directory you are in. Alternatively you can pipe a CHANGELOG-file from a path.
 
+### Latest version
+
 Get the latest version in the CHANGELOG.
 ```bash
 > verso latest
 
 0.3.0
 ```
+
+### List all version
 
 Get list of versions found from the CHANGELOG. Each version will be in its own line.
 ```bash
@@ -39,9 +43,27 @@ Get list of versions found from the CHANGELOG. Each version will be in its own l
 0.1.0
 ```
 
+### Bump version
+
+Bump (increment) the latest found version. Assume the latest version is 0.3.0.
+```bash
+> verso bump major
+
+1.3.0
+```
+
+### Piping a changelog to verso
+
 Pipe a CHANGELOG-file from a path using e.g. cat
 ```bash
 > cat CHANGELOG.md | verso latest 
 
 0.3.0
+```
+
+### Bonus: Changelog ready version header
+
+Use verso and sed to produce CHANGELOG.md ready version header.
+```bash
+> verso bump minor | sed "s/\(.*\)/\## [\1] $(date +%Y-%m-%d)/"
 ```
