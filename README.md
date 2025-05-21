@@ -63,7 +63,9 @@ Pipe a CHANGELOG-file from a path using e.g. cat
 
 ### Bonus: Changelog ready version header
 
-Use verso and sed to produce CHANGELOG.md ready version header.
+Use verso and sed to produce CHANGELOG.md ready version header. Assume the latest version is 0.3.0.
 ```bash
 > verso bump minor | sed "s/\(.*\)/\## [\1] $(date +%Y-%m-%d)/"
+
+0.4.0
 ```
