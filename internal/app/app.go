@@ -11,15 +11,13 @@ import (
 	"github.com/hkionline/verso.cli/internal/output"
 )
 
-const defaultArg string = "latest"
-
 type app struct {
 	arg       string
 	changelog verso.Changelog
 }
 
 // New initializes and returns the app struct. Possible command-line arguments and flags
-// are parsed, and if not present, default values are used.
+// are parsed, and if not present, default output is produced.
 func New() (*app, error) {
 
 	app := &app{
@@ -85,24 +83,25 @@ func (a *app) readFromStdIn() {
 }
 
 func (a *app) Output() {
-	if a.arg == "latest" {
+
+	switch a.arg {
+	case "latest":
+		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
+	case "list":
+		fmt.Fprint(os.Stdout, output.List(&a.changelog))
+	default:
 		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
 	}
 
-	if a.arg == "list" {
-		fmt.Fprint(os.Stdout, output.List(&a.changelog))
-	}
 }
 
 func getFlagArg() string {
 	flag.Parse()
 
-	// TODO: Specify CHANGELOG path as an argument.
-
 	args := flag.Args()
 
 	if len(args) == 0 {
-		return defaultArg
+		return ""
 	}
 
 	return args[0]
