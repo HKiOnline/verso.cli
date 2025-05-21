@@ -67,5 +67,5 @@ Use verso and sed to produce CHANGELOG.md ready version header. Assume the lates
 ```bash
 > verso bump minor | sed "s/\(.*\)/\## [\1] $(date +%Y-%m-%d)/"
 
-0.4.0
+## [0.4.0] 2025-05-21
 ```
