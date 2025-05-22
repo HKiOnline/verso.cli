@@ -12,7 +12,7 @@ import (
 )
 
 type app struct {
-	arg       string
+	args      []string
 	changelog verso.Changelog
 }
 
@@ -21,7 +21,7 @@ type app struct {
 func New() (*app, error) {
 
 	app := &app{
-		arg: getFlagArg(),
+		args: getFlagArg(),
 	}
 
 	// TODO: Handle errors - if logic doesn't need to handle errors, remove the error return value!
@@ -84,25 +84,55 @@ func (a *app) readFromStdIn() {
 
 func (a *app) Output() {
 
-	switch a.arg {
+	if len(a.args) < 1 {
+		a.args = []string{"invalid"}
+	}
+
+	mainCmd := a.args[0]
+
+	switch mainCmd {
+
 	case "latest":
+		fallthrough
+	case "l":
 		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
 	case "list":
+		fallthrough
+	case "ls":
 		fmt.Fprint(os.Stdout, output.List(&a.changelog))
+	case "bump":
+		fallthrough
+	case "b":
+
+		if len(a.args) < 2 {
+			a.args[1] = "invalid"
+		}
+
+		subCmd := a.args[1]
+
+		switch subCmd {
+		case "patch":
+			fallthrough
+		case "+":
+			fmt.Fprint(os.Stdout, output.Bump(&a.changelog, output.Patch))
+		case "minor":
+			fallthrough
+		case "++":
+			fmt.Fprint(os.Stdout, output.Bump(&a.changelog, output.Minor))
+		case "major":
+			fallthrough
+		case "+++":
+			fmt.Fprint(os.Stdout, output.Bump(&a.changelog, output.Major))
+		default:
+			fmt.Fprint(os.Stderr, "bump command requires a sub-command: use either bump patch, bump minor or bump major")
+		}
 	default:
 		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
 	}
 
 }
 
-func getFlagArg() string {
+func getFlagArg() []string {
 	flag.Parse()
-
-	args := flag.Args()
-
-	if len(args) == 0 {
-		return ""
-	}
-
-	return args[0]
+	return flag.Args()
 }
