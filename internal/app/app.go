@@ -82,6 +82,8 @@ func (a *app) readFromStdIn() {
 	}
 }
 
+// Output app receiver method provides all the formatted output of verso.
+// The ouput is printed either to Stdout or Stderr or both.
 func (a *app) Output() {
 
 	if len(a.args) < 1 {
