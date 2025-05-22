@@ -8,7 +8,7 @@ import (
 func TestNewApp(t *testing.T) {
 	t.Parallel()
 
-	firstArg := "test_app"
+	firstArg := "verso"
 
 	tests := []struct {
 		name   string
@@ -18,7 +18,7 @@ func TestNewApp(t *testing.T) {
 		{
 			name:   "without args",
 			args:   []string{firstArg},
-			expArg: "latest",
+			expArg: "",
 		},
 		{
 			name:   "with arg 'latest'",
