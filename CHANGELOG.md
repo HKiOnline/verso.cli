@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.4.0] - 2025-06-07
+
+### Added
+
+- Bump commands to increment the outputted version
+- Tests
+- Restructured the output functions into their own package
+- Added more complex argument handling, so far no need for more advanced libraries
+
 ## [0.3.1] - 2025-05-21
 
 ### Changed

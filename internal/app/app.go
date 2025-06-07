@@ -8,21 +8,23 @@ import (
 	"os"
 
 	"github.com/hkionline/verso"
+	"github.com/hkionline/verso.cli/internal/output"
 )
 
-const defaultArg string = "latest"
-
 type app struct {
-	arg       string
+	args      []string
 	changelog verso.Changelog
 }
 
 // New initializes and returns the app struct. Possible command-line arguments and flags
-// are parsed, and if not present, default values are used.
+// are parsed, and if not present, default output is produced.
 func New() (*app, error) {
 
 	app := &app{
-		arg: getFlagArg(),
+		args: getFlagArg(),
+		changelog: verso.Changelog{
+			Versions: []verso.Semver{},
+		},
 	}
 
 	// TODO: Handle errors - if logic doesn't need to handle errors, remove the error return value!
@@ -55,12 +57,13 @@ func (a *app) readFromWorkingDirectory() {
 	// TODO: Add logic to read CHANGELOG from a specific path. For now, current working directory is used.
 
 	execPath, err := os.Getwd()
+	a.changelog.Path = execPath + "/CHANGELOG.md"
 
 	if err != nil {
 		log.Fatalf("failed to get path for current working directory: %v\n", err)
 	}
 
-	a.changelog, err = verso.ParsePath(execPath + "/CHANGELOG.md")
+	a.changelog, err = verso.ParsePath(a.changelog.Path)
 
 	if err != nil {
 		log.Fatalf("failed to read version info: %v\n", err)
@@ -70,6 +73,7 @@ func (a *app) readFromWorkingDirectory() {
 // ReadFromStdIn reads contents of a changelog from the standard in
 func (a *app) readFromStdIn() {
 
+	a.changelog.Path = "stdin"
 	bytes, err := io.ReadAll(os.Stdin)
 
 	if err != nil {
@@ -83,29 +87,61 @@ func (a *app) readFromStdIn() {
 	}
 }
 
+// Output app receiver method provides all the formatted output of verso.
+// The ouput is printed either to Stdout or Stderr or both.
 func (a *app) Output() {
-	if a.arg == "latest" {
-		version := a.changelog.Versions[0]
-		fmt.Fprintf(os.Stdout, "%d.%d.%d\n", version.Major, version.Minor, version.Patch)
+
+	if len(a.args) < 1 {
+		a.args = []string{"invalid"}
 	}
 
-	if a.arg == "list" {
-		for _, version := range a.changelog.Versions {
-			fmt.Fprintf(os.Stdout, "%d.%d.%d\n", version.Major, version.Minor, version.Patch)
+	mainCmd := a.args[0]
+
+	switch mainCmd {
+
+	case "latest":
+		fallthrough
+	case "l":
+		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
+	case "list":
+		fallthrough
+	case "ls":
+		fmt.Fprint(os.Stdout, output.List(&a.changelog))
+	case "bump":
+		fallthrough
+	case "b":
+
+		if len(a.args) <= 1 {
+			fmt.Fprint(os.Stderr, "bump command requires a sub-command: use either bump patch, bump minor or bump major")
+			os.Exit(1)
 		}
+
+		subCmd := a.args[1]
+
+		switch subCmd {
+		case "patch":
+			fallthrough
+		case "+":
+			fmt.Fprint(os.Stdout, output.Bump(&a.changelog, output.Patch))
+		case "minor":
+			fallthrough
+		case "++":
+			fmt.Fprint(os.Stdout, output.Bump(&a.changelog, output.Minor))
+		case "major":
+			fallthrough
+		case "+++":
+			fmt.Fprint(os.Stdout, output.Bump(&a.changelog, output.Major))
+		default:
+			fmt.Fprint(os.Stderr, "bump command requires a sub-command: use either bump patch, bump minor or bump major")
+			os.Exit(1)
+		}
+	default:
+		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
 	}
+
 }
 
-func getFlagArg() string {
+func getFlagArg() []string {
 	flag.Parse()
-
-	// TODO: Specify CHANGELOG path as an argument.
-
-	args := flag.Args()
-
-	if len(args) == 0 {
-		return defaultArg
-	}
-
-	return args[0]
+	return flag.Args()
 }
