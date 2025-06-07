@@ -22,6 +22,9 @@ func New() (*app, error) {
 
 	app := &app{
 		args: getFlagArg(),
+		changelog: verso.Changelog{
+			Versions: []verso.Semver{},
+		},
 	}
 
 	// TODO: Handle errors - if logic doesn't need to handle errors, remove the error return value!
@@ -54,12 +57,13 @@ func (a *app) readFromWorkingDirectory() {
 	// TODO: Add logic to read CHANGELOG from a specific path. For now, current working directory is used.
 
 	execPath, err := os.Getwd()
+	a.changelog.Path = execPath + "/CHANGELOG.md"
 
 	if err != nil {
 		log.Fatalf("failed to get path for current working directory: %v\n", err)
 	}
 
-	a.changelog, err = verso.ParsePath(execPath + "/CHANGELOG.md")
+	a.changelog, err = verso.ParsePath(a.changelog.Path)
 
 	if err != nil {
 		log.Fatalf("failed to read version info: %v\n", err)
@@ -69,6 +73,7 @@ func (a *app) readFromWorkingDirectory() {
 // ReadFromStdIn reads contents of a changelog from the standard in
 func (a *app) readFromStdIn() {
 
+	a.changelog.Path = "stdin"
 	bytes, err := io.ReadAll(os.Stdin)
 
 	if err != nil {
