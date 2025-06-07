@@ -1,10 +1,10 @@
 BINARY_NAME=verso
-OUTPUT_DIR=out
+OUTPUT_DIR=bin
 
 all: build test
  
 build:
-	go build -o ./${OUTPUT_DIR}/${BINARY_NAME} main.go
+	go build -o ./${OUTPUT_DIR}/${BINARY_NAME} cmd/verso/main.go
  
 test:
 	go test -json ./... > ./${OUTPUT_DIR}/test_report.json && cat ./${OUTPUT_DIR}/test_report.json | jq '. | select(.Action == "fail")'
