@@ -106,8 +106,9 @@ func (a *app) Output() {
 		fallthrough
 	case "b":
 
-		if len(a.args) < 2 {
-			a.args[1] = "invalid"
+		if len(a.args) <= 1 {
+			fmt.Fprint(os.Stderr, "bump command requires a sub-command: use either bump patch, bump minor or bump major")
+			os.Exit(1)
 		}
 
 		subCmd := a.args[1]
@@ -127,6 +128,7 @@ func (a *app) Output() {
 			fmt.Fprint(os.Stdout, output.Bump(&a.changelog, output.Major))
 		default:
 			fmt.Fprint(os.Stderr, "bump command requires a sub-command: use either bump patch, bump minor or bump major")
+			os.Exit(1)
 		}
 	default:
 		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
