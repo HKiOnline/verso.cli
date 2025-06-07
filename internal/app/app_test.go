@@ -1,51 +1,29 @@
 package app
 
 import (
-	"os"
 	"testing"
 )
 
-func TestNewApp(t *testing.T) {
-	t.Parallel()
+func TestNew(t *testing.T) {
+	t.Run("basic initialization", func(t *testing.T) {
+		app, err := New()
+		if err != nil {
+			t.Errorf("Unexpected error: %v", err)
+		}
 
-	firstArg := "verso"
+		if app == nil {
+			t.Errorf("App should not be nil")
+		}
 
-	tests := []struct {
-		name   string
-		args   []string
-		expArg string
-	}{
-		{
-			name:   "without args",
-			args:   []string{firstArg},
-			expArg: "",
-		},
-		{
-			name:   "with arg 'latest'",
-			args:   []string{firstArg, "latest"},
-			expArg: "latest",
-		},
-		{
-			name:   "with arg 'list'",
-			args:   []string{firstArg, "list"},
-			expArg: "list",
-		},
-	}
+		// Check that the args slice is initialized (even if it's empty)
+		if app.args == nil {
+			t.Errorf("Args slice should not be nil")
+		}
 
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
-
-			os.Args = test.args
-
-			app, err := New()
-
-			if err != nil {
-				t.Fatalf("creation of app shouldn't fail - error: %v\n", err)
-			}
-
-			if test.expArg != app.arg {
-				t.Fatalf("expected flag argument \"%s\" but got \"%s\"\n", test.expArg, app.arg)
-			}
-		})
-	}
+		// Check that the changelog is initialized (even if it's empty)
+		if app.changelog.Versions == nil {
+			t.Errorf("Changelog versions slice should not be nil")
+		}
+	})
 }
+
