@@ -18,6 +18,10 @@ const (
 // found from the changelog.
 func Bump(changelog *verso.Changelog, bumpLevel BumpLevel) string {
 
+	if len(changelog.Versions) < 1 {
+		return ""
+	}
+
 	version := changelog.Versions[0]
 
 	if bumpLevel == Patch {
