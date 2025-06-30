@@ -1,4 +1,4 @@
-# CONTRIBUTORS
+# Contributing to Verso CLI
 
 Thank you for considering contributing to the project! 🎉❤️
 

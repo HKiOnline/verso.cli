@@ -49,7 +49,15 @@ Bump (increment) the latest found version. Assume the latest version is 0.3.0.
 ```bash
 > verso bump major
 
-1.3.0
+1.0.0
+
+> verso bump minor
+
+0.4.0
+
+> verso bump patch
+
+0.3.1
 ```
 
 ### Piping a changelog to verso
