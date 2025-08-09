@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.0.0] - 2025-08-09
+
+### Added
+
+- Barebones help output when no arguments are present
+
+### Changed
+
+- First stable version of Verso CLI
+- By default help is now outputted instead of latest version from changelog
+
 ## [0.4.2] - 2025-07-09
 
 ### Changed
