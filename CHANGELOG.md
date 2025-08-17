@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.5.3] - 2025-08-17
+
+### Changed
+
+- Fixed GoReleaser config bug
+
 ## [0.5.2] - 2025-08-17
 
 ### Added
