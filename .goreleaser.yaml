@@ -1,5 +1,5 @@
 version: 2
 
 builds:
-  main: './cmd/verso'
-  binary: 'verso'
+  - main: './cmd/verso'
+    binary: 'verso'
