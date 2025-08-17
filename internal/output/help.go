@@ -7,8 +7,9 @@ func Help() string {
 	sb := strings.Builder{}
 
 	sb.WriteString("\n")
-	sb.WriteString("Verso CLI - Simple semantic version extractor CLI\n")
-	sb.WriteString("\n")
+	sb.WriteString("Verso CLI - Simple semantic version extractor CLI ")
+	sb.WriteString(Version())
+	sb.WriteString("\n\n")
 
 	sb.WriteString("Usage:\n")
 	sb.WriteString("\n")

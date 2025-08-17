@@ -1,10 +1,14 @@
 package output
 
-import "github.com/hkionline/verso"
+import (
+	"fmt"
+
+	"github.com/hkionline/verso"
+)
 
 func Version() string {
 	version, _ := getVersion()
-	return version.String()
+	return fmt.Sprintf("v%d.%d.%d", version.Major, version.Minor, version.Patch)
 }
 
 func getVersion() (verso.Semver, error) {
