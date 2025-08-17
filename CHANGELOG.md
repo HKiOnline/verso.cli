@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-## [1.0.0] - 2025-08-09
+## [0.5.0] - 2025-08-17
 
 ### Added
 
@@ -15,7 +15,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- First stable version of Verso CLI
 - By default help is now outputted instead of latest version from changelog
 - Updated to use Verso module v1.0.1
 
