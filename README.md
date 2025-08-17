@@ -6,13 +6,23 @@ Simple [CHANGELOG](https://keepachangelog.com) [semver](https://semver.org/) ext
 
 ## Installation
 
-At the moment you need to have Go lang installed. Please make sure you have your GOPATH environmental variable set and exported as well. If you have these requirements fullfilled you can install Verso CLI with the following command:
+There are couple of ways to install Verso to your system. The project is working on adding more altrenative, easy ways, to install Verso. Below are the currently supported installation methods.
+
+### Using Go Install
+
+You can install Verso easily if you have Go installed in your system. Please make sure you have your GOPATH environmental variable set and exported as well. If you have these requirements fullfilled you can install Verso CLI with the following command:
 
 ```bash
 go install github.com/hkionline/verso.cli/cmd/verso@latest
 ```
 
 After Installation you should now have the verso command available from your favorite terminal emulator.
+
+### Downloading A Release Binary
+
+The project makes multiple kinds of binaries available to download directly from the releases page. Navigate to releases, choose the latest release or any of the older releases and dowload the compressed directory of a Verso-release. The directory contains the lisence, changelog and the binary itself. You may manually move the binary to any location you want Verso CLI to run.Make sure to add it to your PATH for ease of use.
+
+*Note* some operating systems, notably MacOS is by default suspicious of any downloaded binary and they are marked as "quarantined". The binary can be "un-quaranined", just follow the instructions in [docs](docs/apple-macos-binary-quarantine.md).
 
 ## Usage
 
