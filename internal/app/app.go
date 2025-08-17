@@ -136,7 +136,7 @@ func (a *app) Output() {
 			os.Exit(1)
 		}
 	default:
-		fmt.Fprint(os.Stdout, output.Latest(&a.changelog))
+		fmt.Fprint(os.Stdout, output.Help())
 	}
 
 }
