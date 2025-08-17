@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Barebones help output when no arguments are present
+- GitHub GoReleaser Action for automated release of Verso CLI (WIP)
 
 ### Changed
 
